@@ -9,15 +9,15 @@ import (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type Network struct {
-        metav1.ObjectMeta `json:"metadata,omitempty"`
-        Spec              networkSpec `json:"spec"`
+	metav1.TypeMeta   `json:",inline"`
+	metav1.ObjectMeta `json:"metadata,omitempty"`
+	Spec              networkSpec `json:"spec"`
 }
 
 type networkSpec struct {
 	Cidr    string `json:"cidr"`
 	Gateway string `json:"gateway"`
 }
-
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
